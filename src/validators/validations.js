@@ -11,7 +11,13 @@ const validateSignUpApi = (req) => {
 };
 
 const validatePatchApi = (req) => {
-  const allowedFields = ["firstName", "lastName", "bio", "skills"];
+  const allowedFields = [
+    "firstName",
+    "lastName",
+    "bio",
+    "skills",
+    "profilePicture",
+  ];
 
   const isAllowed = Object.keys(req.body).every((key) =>
     allowedFields.includes(key)

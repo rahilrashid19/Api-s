@@ -5,8 +5,15 @@ const { userRouter } = require("./routes/user");
 const cookieParser = require("cookie-parser");
 const { requestRouter } = require("./routes/request");
 const { connectionRouter } = require("./routes/connection");
+const cors = require("cors");
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -20,4 +27,5 @@ connectDB()
     console.log("Database connection established");
     app.listen(7777, () => console.log("Listening on PORT 7777"));
   })
+
   .catch((err) => console.log("Error connecting to Database: " + err.message));

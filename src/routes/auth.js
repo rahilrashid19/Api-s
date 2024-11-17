@@ -42,6 +42,7 @@ authRouter.post("/api/login", async (req, res) => {
     res.cookie("token", token);
     res.status(200).json({
       message: "User Logged in successfully",
+      user,
     });
   } catch (error) {
     res.status(400).json({
