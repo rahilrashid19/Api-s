@@ -4,7 +4,11 @@ const { User } = require("../models/user");
 const userAuth = async (req, res, next) => {
   try {
     const { token } = req.cookies;
-    if (!token) throw new Error("User not logged in");
+    if (!token) {
+      return res.status(401).json({
+        message: "Unauthorized User",
+      });
+    }
     const { id } = jwt.verify(token, "EXPRESS@2024");
     const user = await User.findOne({ _id: id });
     req.user = user;
