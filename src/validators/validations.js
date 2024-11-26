@@ -17,6 +17,8 @@ const validatePatchApi = (req) => {
     "bio",
     "skills",
     "profilePicture",
+    "gender",
+    "age",
   ];
 
   const isAllowed = Object.keys(req.body).every((key) =>

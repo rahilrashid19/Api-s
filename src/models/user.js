@@ -28,6 +28,9 @@ const userSchema = new Schema(
         message: "{VALUE} is not a valid gender",
       },
     },
+    age: {
+      type: Number,
+    },
     bio: {
       type: String,
       default: "Employee at Dunder Mifflin",
