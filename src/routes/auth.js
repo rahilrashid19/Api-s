@@ -15,6 +15,7 @@ authRouter.post("/api/signup", async (req, res) => {
       password,
       gender,
       age,
+      bio,
       profilePicture,
     } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,6 +25,7 @@ authRouter.post("/api/signup", async (req, res) => {
       email,
       gender,
       age,
+      bio,
       profilePicture,
       password: hashedPassword,
     });
