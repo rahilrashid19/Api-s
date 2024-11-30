@@ -106,6 +106,31 @@ requestRouter.post(
   }
 );
 
+requestRouter.get("/api/requests", userAuth, async (req, res) => {
+  try {
+    const loggedInUser = req.user;
+    const users = await RequestModel.find({
+      status: "interested",
+      toUserId: loggedInUser._id,
+    }).populate("fromUserId", [
+      "firstName",
+      "lastName",
+      "gender",
+      "bio",
+      "age",
+      "profilePicture",
+    ]);
+    res.status(200).json({
+      message: "Requests fetched successfully",
+      users,
+    });
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
+  }
+});
+
 module.exports = {
   requestRouter,
 };

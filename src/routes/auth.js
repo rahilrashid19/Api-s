@@ -8,13 +8,23 @@ const authRouter = express.Router();
 authRouter.post("/api/signup", async (req, res) => {
   try {
     validateSignUpApi(req);
-    const { firstName, lastName, email, password, gender } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      gender,
+      age,
+      profilePicture,
+    } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
       firstName,
       lastName,
       email,
       gender,
+      age,
+      profilePicture,
       password: hashedPassword,
     });
     await user.save();

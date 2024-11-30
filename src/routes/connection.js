@@ -21,8 +21,22 @@ connectionRouter.get("/api/connections", userAuth, async (req, res) => {
         },
       ],
     })
-      .populate("fromUserId", ["firstName", "lastName"])
-      .populate("toUserId", ["firstName", "lastName"]);
+      .populate("fromUserId", [
+        "firstName",
+        "lastName",
+        "gender",
+        "bio",
+        "age",
+        "profilePicture",
+      ])
+      .populate("toUserId", [
+        "firstName",
+        "lastName",
+        "gender",
+        "bio",
+        "age",
+        "profilePicture",
+      ]);
 
     res.status(200).json({
       message: "Connections fetched successfully",
